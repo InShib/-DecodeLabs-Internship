@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecodeLabs AI Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">AI</div>
+            <div>
+                <h1>DecodeLabs AI</h1>
+                <p>Custom AI Chatbot with Memory</p>
+            </div>
+            <span class="status">● Online</span>
+        </header>
+
+        <main id="chatBox" class="chat-box">
+            <div class="message assistant">
+                <div class="avatar">AI</div>
+                <div class="bubble">
+                    Hello! 👋 I'm your AI assistant. What would you like to talk about?
+                </div>
+            </div>
+        </main>
+
+        <div id="typing" class="typing hidden">AI is thinking...</div>
+
+        <form id="chatForm" class="chat-form">
+            <input
+                id="messageInput"
+                type="text"
+                placeholder="Type your message..."
+                autocomplete="off"
+                maxlength="4000"
+                required
+            >
+            <button id="sendButton" type="submit">Send ➤</button>
+        </form>
+
+        <footer>
+            <span>Powered by OpenAI</span>
+            <span>Conversation memory enabled</span>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
