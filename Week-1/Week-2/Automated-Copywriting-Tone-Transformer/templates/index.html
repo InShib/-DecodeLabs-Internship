@@ -1,0 +1,203 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CopyCraft AI | Copywriting Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a class="brand" href="/">CopyCraft<span>AI</span></a>
+            <span class="badge">GENERATIVE AI STUDIO</span>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Words that work.<br><span>Copy that connects.</span></h1>
+
+                <p class="subtitle">
+                    Transform your product details into platform-ready marketing copy.
+                    Choose your tone, tune the AI, and create something compelling.
+                </p>
+            </section>
+
+            <section class="workspace">
+                <form id="copyForm" class="input-card">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">01 / YOUR PRODUCT</p>
+                            <h2>Tell us what you're promoting</h2>
+                        </div>
+                    </div>
+
+                    <label for="productName">Product name</label>
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="e.g. AeroFit Running Shoes"
+                        required
+                    >
+
+                    <label for="description">Product description</label>
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="Describe your product, its features, and the benefits it offers..."
+                        required
+                    ></textarea>
+
+                    <div class="two-columns">
+                        <div>
+                            <label for="platform">Target platform</label>
+                            <select id="platform">
+                                <option value="Instagram">Instagram</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Email">Email</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="tone">Writing tone</label>
+                            <select id="tone">
+                                <option value="Friendly">Friendly</option>
+                                <option value="Professional">Professional</option>
+                                <option value="Persuasive">Persuasive</option>
+                                <option value="Casual">Casual</option>
+                                <option value="Humorous">Humorous</option>
+                                <option value="Luxury">Luxury</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="section-heading settings-heading">
+                        <div>
+                            <p class="eyebrow">02 / AI SETTINGS</p>
+                            <h2>Fine-tune your creativity</h2>
+                        </div>
+                    </div>
+
+                    <div class="slider-block">
+                        <div class="slider-label">
+                            <label for="temperature">Temperature</label>
+                            <output id="temperatureValue">0.7</output>
+                        </div>
+
+                        <input
+                            type="range"
+                            id="temperature"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value="0.7"
+                        >
+
+                        <div class="range-notes">
+                            <span>More predictable</span>
+                            <span>More creative</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-block">
+                        <div class="slider-label">
+                            <label for="topP">Top-P</label>
+                            <output id="topPValue">0.9</output>
+                        </div>
+
+                        <input
+                            type="range"
+                            id="topP"
+                            min="0.1"
+                            max="1"
+                            step="0.05"
+                            value="0.9"
+                        >
+
+                        <div class="range-notes">
+                            <span>Focused selection</span>
+                            <span>Broader selection</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="generateBtn" class="generate-btn">
+                        <span id="buttonText">Generate marketing copy</span>
+                        <span aria-hidden="true">↗</span>
+                    </button>
+
+                    <p class="privacy-note">
+                        Your product details are used to generate this copy.
+                    </p>
+                </form>
+
+                <section class="output-card" aria-live="polite">
+                    <div class="output-header">
+                        <div>
+                            <p class="eyebrow">03 / YOUR GENERATED COPY</p>
+                            <h2>Made for your audience</h2>
+                        </div>
+
+                        <span class="sparkle">✳</span>
+                    </div>
+
+                    <div id="emptyState" class="empty-state">
+                        <div class="empty-icon">✦</div>
+
+                        <h3>Your next great idea starts here.</h3>
+
+                        <p>
+                            Fill in your product details and generate tailored
+                            marketing copy in seconds.
+                        </p>
+                    </div>
+
+                    <div id="loadingState" class="loading-state hidden">
+                        <div class="loader"></div>
+                        <h3>Crafting your copy...</h3>
+                        <p>Finding the right words for your audience.</p>
+                    </div>
+
+                    <div id="resultContainer" class="result-container hidden">
+                        <div id="resultMeta" class="result-meta"></div>
+
+                        <div id="generatedCopy" class="generated-copy"></div>
+
+                        <div class="result-actions">
+                            <button
+                                type="button"
+                                id="copyBtn"
+                                class="secondary-btn"
+                            >
+                                Copy text
+                            </button>
+
+                            <button
+                                type="button"
+                                id="regenerateBtn"
+                                class="secondary-btn"
+                            >
+                                Regenerate ↻
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="errorMessage" class="error-message hidden"></div>
+
+                    <div class="output-footer">
+                        <span>POWERED BY GENERATIVE AI</span>
+                        <span>BUILT WITH FLASK + GEMINI</span>
+                    </div>
+                </section>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <span>CopyCraft AI</span>
+            <span>DecodeLabs · Week 2 Project</span>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
